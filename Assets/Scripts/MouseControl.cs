@@ -24,7 +24,10 @@ public class MouseControl : MonoBehaviour {
 
 			Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			target = Instantiate(prefab, pos, Quaternion.identity);
-			agent.target = target.transform;
+			if(agent.targets.Count == 0)
+				agent.targets.Add(target.transform);
+			else
+				agent.targets[0] = target.transform;
 		}
 	}
 }
